@@ -41,11 +41,8 @@ def imagedata_generator():
     with np.load('../data/mnist.npz') as data:
         x_train = data['x_train']
         y_train = data['y_train']
-        x_test = data['x_test']
-        y_test = data['y_test']
 
     x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
-    x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
 
     datagen = tf.keras.preprocessing.image.ImageDataGenerator(
         horizontal_flip=True,

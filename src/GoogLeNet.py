@@ -37,6 +37,10 @@ class Inception(tf.keras.layers.Layer):
         outputs = tf.concat([p1, p2, p3, p4], axis=-1)
         return outputs
 
+    # 添加显式的__call__方法，解决告警：'Inception' object is not callable
+    def __call__(self, inputs, *args, **kwargs):
+        return super().__call__(inputs, *args, **kwargs)
+
 # 辅助分类器
 def aux_classifier(x,filter_size):
     # 池化层
